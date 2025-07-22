@@ -32,8 +32,8 @@
       }
     </script>
     <script type="module">
-      import "@material/web/all.js";
-      import { styles as typescaleStyles } from "@material/web/typography/md-typescale-styles.js";
+      import '@material/web/all.js';
+      import { styles as typescaleStyles } from '@material/web/typography/md-typescale-styles.js';
 
       document.adoptedStyleSheets.push(typescaleStyles.styleSheet);
     </script>
@@ -42,7 +42,9 @@
   </head>
   <body>
     <section class="top-page">
-      <div class="main-logo"></div>
+      <div class="main-logo">
+        <img src="./sun.png" alt="a cartoon sun logo" />
+      </div>
       <div class="input-box">
         <md-outlined-text-field label="City Name">
           <md-icon-button slot="leading-icon" class="arrow-back-btn">

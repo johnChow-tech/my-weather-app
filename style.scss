@@ -1,9 +1,10 @@
 // import variables
-@use "variables" as v;
+@use 'colors';
+@use 'variables' as v;
 
 // basic settings
 html {
-  font-size: 16px;
+  font-size: v.$basic-font-size;
 }
 
 body {
@@ -19,14 +20,26 @@ body {
   flex-direction: column;
 
   /* 你也可以在这里设置全局背景色等 */
-  background-color: #fcf8f7;
+  background-color: var(--md-sys-color-surface);
 }
 
 // components settings
-#top-page {
+.top-page {
+  display: flex;
+  align-items: center; /* 垂直居中 */
+  flex-direction: column;
 }
 
+.main-logo img {
+  width: v.$logo-size;
+  margin-bottom: 5rem;
+}
 .popular-cities {
-  margin-top: 1rem;
-  gap: 0.5rem; /* 在flex子项之间创建0.5rem的间距 */
+  display: flex;
+  margin-top: 0.3rem;
+  gap: v.$popular-cities-chips-gap; /* 在flex子项之间创建0.5rem的间距 */
+}
+
+.input-box md-outlined-text-field {
+  --md-outlined-text-field-container-shape: 13px;
 }
