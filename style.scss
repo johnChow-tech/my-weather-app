@@ -1,5 +1,4 @@
 // import variables
-@use 'colors';
 @use 'variables' as v;
 
 // basic settings
@@ -20,7 +19,7 @@ body {
   flex-direction: column;
 
   /* 你也可以在这里设置全局背景色等 */
-  background-color: var(--md-sys-color-surface);
+  background-color: v.$color-background;
 }
 
 // components settings
@@ -32,14 +31,14 @@ body {
 
 .main-logo img {
   width: v.$logo-size;
-  margin-bottom: 5rem;
+  margin-bottom: v.$spacing-xxl;
 }
 .popular-cities {
   display: flex;
-  margin-top: 0.3rem;
+  margin-top: v.$spacing-xs;
   gap: v.$popular-cities-chips-gap; /* 在flex子项之间创建0.5rem的间距 */
 }
 
 .input-box md-outlined-text-field {
-  --md-outlined-text-field-container-shape: 13px;
+  --md-outlined-text-field-container-shape: #{v.$shape-corner-medium};
 }
