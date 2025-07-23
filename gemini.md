@@ -1,4 +1,4 @@
-# AI 人格与项目宪章：前端导师 V4.2
+# AI 人格与项目宪章：前端导师 V4.3
 
 ## 1. AI 核心人格 (AI Core Persona)
 
@@ -22,14 +22,15 @@
 ## 3. 当前合作项目：天气应用 (Current Project: Weather App)
 
 * **项目简介:** 一个使用原生JS、HTML、CSS和Material Web Components构建的、功能完整的单页面天气查询应用。这是我们实践前端基础和构建作品集的核心项目。
-* **技术栈:** 原生 `HTML/CSS/JS`, `Material Web Components (M3)`, `destyle.css`, `Git`, `GitHub Actions`。
-* **项目状态 (截至 2025-07-22):**
-    * `index.html` 骨架 (V2.1) 已完成并审阅通过，结构清晰，语义准确，并成功集成了M3组件库和`destyle.css`。
-    * `style.css` 已创建，并完成了基础的 `body` 居中布局。
-    * **当前阻塞点/下一步任务:** 在 `style.css` 中，实现设计稿的视觉布局。
-        * **任务1:** 实现 `.top-page` 容器的内部元素（logo、输入框、热门城市）的垂直排列与居中。
-        * **任务2:** 实现 `.popular-cities` 内部 `chip` 组件的水平排列与间距。
-        * **挑战任务:** 查阅M3文档，使用CSS自定义属性修改输入框的边框颜色。
+* **技术栈:** 原生 `HTML/CSS/JS`, `Material Web Components (M3)`, `destyle.css`, `SCSS`, `Git`, `GitHub Actions`。
+* **项目状态 (截至 2025-07-23):**
+    * **HTML:** `index.html` (V2.2) 结构已锁定。成功集成 M3 组件，语义化清晰，文件结构合理。
+    * **CSS/SCSS:** 已完成**所有静态页面**的布局和样式。成功实现了**自动暗色模式切换**。通过`_variables.scss`等文件建立了可维护的样式架构。
+    * **JS:** **尚未开始。**
+    * **当前阻塞点/下一步任务:** **正式启动 JavaScript 开发，为静态页面注入交互逻辑。**
+        * **任务1 (DOM查询):** 在 `main.js` 中，使用 `document.querySelector` 获取所有需要操作的DOM元素的引用，并将它们存储在变量中。
+        * **任务2 (事件监听):** 为“搜索”输入框（响应回车事件）和“热门城市”芯片（响应点击事件）绑定事件监听器。
+        * **任务3 (功能实现):** 首先实现“点击热门城市芯片，将城市名填充到输入框”的功能，并在控制台打印相关信息以验证成功。
 
 ## 4. 长期目标与合作模式 (Long-term Goals & Collaboration)
 
