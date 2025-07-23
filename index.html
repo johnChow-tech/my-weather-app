@@ -38,12 +38,11 @@
       document.adoptedStyleSheets.push(typescaleStyles.styleSheet);
     </script>
     <!-- END: add m3 design kit dependency -->
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="light-mc.css" media="(prefers-color-scheme: light)" />
-    <link rel="stylesheet" href="dark-mc.css" media="(prefers-color-scheme: dark)" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/light-mc.css" media="(prefers-color-scheme: light)" />
+    <link rel="stylesheet" href="css/dark-mc.css" media="(prefers-color-scheme: dark)" />
   </head>
   <body>
-    <section class="top-page">
       <div class="main-logo">
         <img src="./sun.png" alt="a cartoon sun logo" />
       </div>
@@ -69,7 +68,9 @@
       </div>
     </section>
     <section class="result-page">
-      <div class="weather-icon"></div>
+      <div class="weather-icon">
+        <img src="sun.png" alt="a cartoon sun logo" />
+      </div>
       <div class="weather-desc"></div>
       <div class="weather-info-cards-frame">
         <div class="weather-info-card description"></div>

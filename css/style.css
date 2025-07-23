@@ -1,0 +1,76 @@
+@charset "UTF-8";
+html {
+  font-size: 16px;
+}
+
+body {
+  /* 确保body至少和视口一样高 */
+  min-height: 100vh;
+  /* 使用Flexbox来居中 */
+  display: flex;
+  justify-content: center; /* 水平居中 */
+  align-items: center; /* 垂直居中 */
+  /* 为了让内部元素垂直排列，可以加上这个 */
+  flex-direction: column;
+  /* 你也可以在这里设置全局背景色等 */
+  background-color: var(--md-sys-color-background);
+}
+
+.result-page, .top-page {
+  display: flex;
+  align-items: center; /* 垂直居中 */
+  flex-direction: column;
+}
+
+.weather-icon img, .main-logo img {
+  width: 17rem;
+  margin-bottom: 3rem;
+}
+
+.weather-info-card {
+  border-radius: 22px;
+  width: 15rem;
+  height: 10rem;
+  transition: ease 0.5s;
+  background-color: var(--md-sys-color-tertiary-container);
+  color: var(--md-sys-color-on-tertiary-container);
+}
+.weather-info-card:hover {
+  height: 16rem;
+  border-radius: 26px;
+  background-color: var(--md-sys-color-tertiary);
+  color: var(--md-sys-color-on-tertiary);
+}
+
+.popular-cities {
+  display: flex;
+  margin-top: 0.5rem;
+  gap: 0.2rem; /* 在flex子项之间创建0.5rem的间距 */
+}
+
+.popular-cities md-suggestion-chip {
+  --md-suggestion-chip-container-shape: 8px;
+}
+
+.input-box md-outlined-text-field {
+  --md-outlined-text-field-container-shape: 22px;
+}
+
+.weather-info-cards-frame {
+  min-height: 16rem;
+  display: flex;
+  flex-direction: row;
+  align-items: end;
+  gap: 1rem;
+}
+
+.result-page {
+  display: none;
+}
+
+body.view-results .top-page {
+  display: none;
+}
+body.view-results .result-page {
+  display: flex;
+}

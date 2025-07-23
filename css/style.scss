@@ -1,0 +1,115 @@
+// import variables
+@use 'variables' as v;
+
+// basic settings
+html {
+  font-size: v.$basic-font-size;
+}
+
+body {
+  /* 确保body至少和视口一样高 */
+  min-height: 100vh;
+
+  /* 使用Flexbox来居中 */
+  display: flex;
+  justify-content: center; /* 水平居中 */
+  align-items: center; /* 垂直居中 */
+
+  /* 为了让内部元素垂直排列，可以加上这个 */
+  flex-direction: column;
+
+  /* 你也可以在这里设置全局背景色等 */
+  background-color: v.$color-background;
+}
+
+// abstract class
+%page-base {
+  display: flex;
+  align-items: center; /* 垂直居中 */
+  flex-direction: column;
+}
+
+%logo-base {
+  width: v.$logo-size;
+  margin-bottom: v.$spacing-xxl;
+}
+
+%card-base {
+  // border: 3px solid black;
+  border-radius: v.$shape-corner-l;
+  width: v.$card-width-m;
+  height: v.$card-height-m;
+  transition: ease 0.5s;
+  background-color: v.$color-tertiary-container;
+  color: v.$color-on-tertiary-container;
+
+  &:hover {
+    height: v.$card-height-l;
+    border-radius: v.$shape-corner-xl;
+    background-color: v.$color-tertiary;
+    color: v.$color-on-tertiary;
+  }
+}
+
+// top page configs
+.top-page {
+  @extend %page-base;
+  // display: none;
+}
+
+.main-logo img {
+  @extend %logo-base;
+}
+
+.popular-cities {
+  display: flex;
+  margin-top: v.$spacing-xs;
+  gap: v.$popular-cities-chips-gap; /* 在flex子项之间创建0.5rem的间距 */
+}
+
+.popular-cities md-suggestion-chip {
+  --md-suggestion-chip-container-shape: #{v.$shape-corner-s};
+}
+
+.input-box md-outlined-text-field {
+  --md-outlined-text-field-container-shape: #{v.$shape-corner-l};
+}
+
+// result page configs
+.result-page {
+  @extend %page-base;
+}
+
+.weather-icon img {
+  @extend %logo-base;
+}
+
+.weather-info-cards-frame {
+  min-height: v.$card-height-l;
+  display: flex;
+  flex-direction: row; //横向排列
+  align-items: end; //底边对齐
+  gap: v.$spacing-md;
+}
+
+.weather-info-card {
+  @extend %card-base;
+}
+
+// ===================================
+// View Management (视图管理)
+// ===================================
+
+// default
+.result-page {
+  display: none;
+}
+
+body.view-results {
+  .top-page {
+    display: none;
+  }
+  .result-page {
+    display: flex;
+  }
+}
