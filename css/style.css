@@ -64,10 +64,6 @@ body {
   gap: 1rem;
 }
 
-.result-page {
-  display: none;
-}
-
 body.view-results .top-page {
   display: none;
 }
