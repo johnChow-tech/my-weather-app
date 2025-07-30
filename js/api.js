@@ -19,4 +19,5 @@ export async function fetchWeatherData(cityName) {
 async function updateUI(data) {
   const temperature = data.current.temp_c;
   elements.weatherInfoCards.temperatureCard.textContent = temperature;
+  elements.body.classList.add('view-results');
 }

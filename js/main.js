@@ -4,7 +4,8 @@ import { fetchWeatherData } from './api.js';
 //  DOM Elements
 // -------------------
 export const elements = {
-  //top page
+  body: document.body,
+  // top page
   mainLogo: document.querySelector('.main-logo'),
   inputBox: document.querySelector('.input-box'),
   searchTextField: document.querySelector('md-outlined-text-field'),
