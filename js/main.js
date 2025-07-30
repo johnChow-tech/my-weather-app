@@ -1,3 +1,5 @@
+import { fetchWeatherData } from './api.js';
+
 // -------------------
 //  DOM Elements
 // -------------------
@@ -47,18 +49,6 @@ const handleSearchKeydown = (event) => {
 const handleWeatherInfoCardClick = (event) => {
   console.log('A weather card was clicked.');
 };
-
-async function fetchWeatherData(cityName) {
-  const apiUrl = `https://api.weatherapi.com/v1/current.json?key=${WEATHER_API_KEY}&q=${cityName}&aqi=no`;
-  try {
-    const request = new Request(apiUrl);
-    const response = await fetch(request);
-    const data = await response.json();
-    console.log(data);
-  } catch (error) {
-    console.error('Failed to fetch weather data:', error);
-  }
-}
 
 // -------------------
 //  Event Listeners
