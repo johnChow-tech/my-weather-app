@@ -3,7 +3,7 @@ import { fetchWeatherData } from './api.js';
 // -------------------
 //  DOM Elements
 // -------------------
-const elements = {
+export const elements = {
   //top page
   mainLogo: document.querySelector('.main-logo'),
   inputBox: document.querySelector('.input-box'),
@@ -14,7 +14,15 @@ const elements = {
   // result page
   weatherDesc: document.querySelector('.weather-desc'),
   weatherIcon: document.querySelector('.weather-icon'),
-  weatherInfoCards: document.querySelectorAll('.weather-info-card'),
+  // weatherInfoCards: document.querySelectorAll('.weather-info-card'),
+  weatherInfoCards: {
+    all: document.querySelectorAll('.weather-info-card'),
+    descriptionCard: document.querySelector('.weather-info-card.description'),
+    temperatureCard: document.querySelector('.weather-info-card.temperature'),
+    humidityCard: document.querySelector('.weather-info-card.humidity'),
+    pressureCard: document.querySelector('.weather-info-card.barometric-pressure'),
+    windSpeedCard: document.querySelector('.weather-info-card.wind-speed'),
+  },
 };
 
 // -------------------
@@ -63,7 +71,7 @@ const addEventListeners = () => {
 
   elements.searchTextField.addEventListener('keydown', handleSearchKeydown);
 
-  elements.weatherInfoCards.forEach((card) => {
+  elements.weatherInfoCards.all.forEach((card) => {
     card.addEventListener('click', handleWeatherInfoCardClick);
   });
 };
