@@ -1,4 +1,6 @@
-// element collections
+// -------------------
+//  DOM Elements
+// -------------------
 const elements = {
   //top page
   mainLogo: document.querySelector('.main-logo'),
@@ -13,32 +15,38 @@ const elements = {
   weatherInfoCards: document.querySelectorAll('.weather-info-card'),
 };
 
-// TODO: add functions
-clickWeatherInfoCard();
-clickPopularCitiesLabel();
+// -------------------
+//  Functions
+// -------------------
+/**
+ * Handles the click event on a popular city chip.
+ * Sets the search text field's value to the chip's label.
+ * @param {Event} event - The click event object.
+ */
+const handlePopularCityClick = (event) => {
+  const chip = event.currentTarget;
+  elements.searchTextField.value = chip.label;
+};
 
-function clickWeatherInfoCard() {
-  elements.weatherInfoCards.forEach((card) => {
-    card.addEventListener('click', () => {
-      console.log('卡片被点击了');
-    });
-  });
-}
-
-function clickPopularCitiesLabel() {
-  elements.popularCitiesChips.forEach((chip) => {
-    chip.addEventListener('click', () => {
-      elements.searchTextField.value = chip.label;
-      fetchWeatherData(chip.label);
-    });
-  });
-}
-
-elements.searchTextField.addEventListener('keydown', (e) => {
-  if (e.code === 'Enter') {
+/**
+ * Handles the keydown event on the search text field.
+ * Logs the input value to the console if the Enter key is pressed.
+ * @param {KeyboardEvent} event - The keydown event object.
+ */
+const handleSearchKeydown = (event) => {
+  if (event.code === 'Enter') {
     fetchWeatherData(elements.searchTextField.value);
   }
-});
+};
+
+/**
+ * Handles the click event on a weather info card.
+ * (Currently logs a message to the console).
+ * @param {Event} event - The click event object.
+ */
+const handleWeatherInfoCardClick = (event) => {
+  console.log('A weather card was clicked.');
+};
 
 async function fetchWeatherData(cityName) {
   const apiUrl = `https://api.weatherapi.com/v1/current.json?key=${WEATHER_API_KEY}&q=${cityName}&aqi=no`;
@@ -51,3 +59,26 @@ async function fetchWeatherData(cityName) {
     console.error('Failed to fetch weather data:', error);
   }
 }
+
+// -------------------
+//  Event Listeners
+// -------------------
+/**
+ * Adds all necessary event listeners to the DOM elements.
+ */
+const addEventListeners = () => {
+  elements.popularCitiesChips.forEach((chip) => {
+    chip.addEventListener('click', handlePopularCityClick);
+  });
+
+  elements.searchTextField.addEventListener('keydown', handleSearchKeydown);
+
+  elements.weatherInfoCards.forEach((card) => {
+    card.addEventListener('click', handleWeatherInfoCardClick);
+  });
+};
+
+// -------------------
+//  Initialization
+// -------------------
+addEventListeners();
