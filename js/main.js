@@ -30,6 +30,30 @@ export const elements = {
 //  Functions
 // -------------------
 /**
+ * update UI after recieving the response from weather api.
+ * @param {JSON} data - response from weather api
+ */
+function updateUI(data) {
+  elements.body.classList.add('view-results');
+
+  const { location, current } = data;
+  const { name, country } = location;
+  const { temp_c, condition } = current;
+  const { text, icon } = condition;
+
+  console.log(temp_c);
+  console.log(name);
+  console.log(country);
+  console.log(text);
+
+  elements.weatherInfoCards.temperatureCard.textContent = temp_c;
+}
+
+function showError(message) {
+  console.error('❌ Error! Should show feedback to user:', message);
+}
+
+/**
  * Handles the click event on a popular city chip.
  * Sets the search text field's value to the chip's label.
  * @param {Event} event - The click event object.
@@ -44,9 +68,14 @@ const handlePopularCityClick = (event) => {
  * Logs the input value to the console if the Enter key is pressed.
  * @param {KeyboardEvent} event - The keydown event object.
  */
-const handleSearchKeydown = (event) => {
+const handleSearchKeydown = async (event) => {
   if (event.code === 'Enter') {
-    fetchWeatherData(elements.searchTextField.value);
+    try {
+      const data = await fetchWeatherData(elements.searchTextField.value);
+      updateUI(data);
+    } catch (error) {
+      showError(error);
+    }
   }
 };
 
