@@ -13,7 +13,7 @@ export const elements = {
   popularCitiesContainer: document.querySelector('.popular-cities'),
   popularCitiesChips: document.querySelectorAll('md-suggestion-chip'),
   // result page
-  weatherDesc: document.querySelector('.weather-desc'),
+  cityName: document.querySelector('.city-name'),
   weatherIcon: document.querySelector('.weather-icon'),
   // weatherInfoCards: document.querySelectorAll('.weather-info-card'),
   weatherInfoCards: {
@@ -36,17 +36,23 @@ export const elements = {
 function updateUI(data) {
   elements.body.classList.add('view-results');
 
-  const { location, current } = data;
-  const { name, country } = location;
-  const { temp_c, condition } = current;
-  const { text, icon } = condition;
+  const {
+    location: { name, country },
+    current: {
+      temp_c,
+      condition: { text, icon },
+      humidity,
+      pressure_mb,
+      wind_kph,
+    },
+  } = data;
 
-  console.log(temp_c);
-  console.log(name);
-  console.log(country);
-  console.log(text);
-
-  elements.weatherInfoCards.temperatureCard.textContent = temp_c;
+  elements.cityName.textContent = `${name},${country}`;
+  elements.weatherInfoCards.descriptionCard.textContent = `${text}`;
+  elements.weatherInfoCards.temperatureCard.textContent = `${temp_c} ℃`;
+  elements.weatherInfoCards.humidityCard.textContent = `${humidity}%`;
+  elements.weatherInfoCards.pressureCard.textContent = `${pressure_mb} hpa`;
+  elements.weatherInfoCards.windSpeedCard.textContent = `${wind_kph} km/h`;
 }
 
 function showError(message) {
@@ -85,7 +91,28 @@ const handleSearchKeydown = async (event) => {
  * @param {Event} event - The click event object.
  */
 const handleWeatherInfoCardClick = (event) => {
-  console.log('A weather card was clicked.');
+  const clickedCard = event.currentTarget;
+  const cardType = clickedCard.dataset.cardType;
+
+  switch (cardType) {
+    case 'humidity':
+      elements.weatherInfoCards.humidityCard.classList.toggle('is-clicked');
+      break;
+    case 'description':
+      elements.weatherInfoCards.descriptionCard.classList.toggle('is-clicked');
+      break;
+    case 'temperature':
+      elements.weatherInfoCards.temperatureCard.classList.toggle('is-clicked');
+      break;
+    case 'pressure':
+      elements.weatherInfoCards.pressureCard.classList.toggle('is-clicked');
+      break;
+    case 'wind-speed':
+      elements.weatherInfoCards.windSpeedCard.classList.toggle('is-clicked');
+      break;
+  }
+
+  console.log(`A weather card was clicked:${cardType}`);
 };
 
 // -------------------
