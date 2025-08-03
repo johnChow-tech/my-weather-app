@@ -9,7 +9,7 @@ export const elements = {
   mainLogo: document.querySelector('.main-logo'),
   inputBox: document.querySelector('.input-box'),
   searchTextField: document.querySelector('md-outlined-text-field'),
-  alertCityNotFound: document.querySelector('.alert-city-not-found'),
+  alertCityNotFound: document.querySelector('.alert-box'),
   popularCitiesContainer: document.querySelector('.popular-cities'),
   popularCitiesChips: document.querySelectorAll('md-suggestion-chip'),
   // result page

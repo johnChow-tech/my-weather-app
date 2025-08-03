@@ -27,13 +27,6 @@ body {
   margin-bottom: 3rem;
 }
 
-.weather-info-card.is-clicked, .weather-info-card:hover {
-  height: 16rem;
-  border-radius: 26px;
-  background-color: var(--md-sys-color-tertiary);
-  color: var(--md-sys-color-on-tertiary);
-}
-
 .weather-info-card {
   border-radius: 22px;
   width: 15rem;
@@ -42,6 +35,13 @@ body {
   background-color: var(--md-sys-color-tertiary-container);
   color: var(--md-sys-color-on-tertiary-container);
 }
+.weather-info-card:hover {
+  height: 16rem;
+  border-radius: 26px;
+  background-color: var(--md-sys-color-tertiary);
+  color: var(--md-sys-color-on-tertiary);
+}
+
 .popular-cities {
   display: flex;
   margin-top: 0.5rem;
@@ -62,6 +62,13 @@ body {
   flex-direction: row;
   align-items: end;
   gap: 1rem;
+}
+
+.weather-info-card.is-clicked {
+  height: 16rem;
+  border-radius: 26px;
+  background-color: var(--md-sys-color-tertiary);
+  color: var(--md-sys-color-on-tertiary);
 }
 
 .result-page {

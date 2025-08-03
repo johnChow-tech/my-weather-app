@@ -34,13 +34,6 @@ body {
   margin-bottom: v.$spacing-xxl;
 }
 
-%card-base-interactive {
-  height: v.$card-height-l;
-  border-radius: v.$shape-corner-xl;
-  background-color: v.$color-tertiary;
-  color: v.$color-on-tertiary;
-}
-
 %card-base {
   // border: 3px solid black;
   border-radius: v.$shape-corner-l;
@@ -51,7 +44,7 @@ body {
   color: v.$color-on-tertiary-container;
 
   &:hover {
-    @extend%card-base-interactive;
+    @include v.card-base-interactive;
   }
 }
 
@@ -99,7 +92,7 @@ body {
 .weather-info-card {
   @extend %card-base;
   &.is-clicked {
-    @extend%card-base-interactive;
+    @include v.card-base-interactive;
   }
 }
 

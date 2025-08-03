@@ -36,3 +36,11 @@ $color-tertiary: var(--md-sys-color-tertiary);
 $color-on-tertiary: var(--md-sys-color-on-tertiary);
 $color-tertiary-container: var(--md-sys-color-tertiary-container);
 $color-on-tertiary-container: var(--md-sys-color-on-tertiary-container);
+
+// handle interaction with cards
+@mixin card-base-interactive() {
+  height: $card-height-l;
+  border-radius: $shape-corner-xl;
+  background-color: $color-tertiary;
+  color: $color-on-tertiary;
+}
