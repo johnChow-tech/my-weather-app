@@ -36,7 +36,7 @@ body {
   color: var(--md-sys-color-on-tertiary-container);
 }
 .weather-info-card:hover {
-  height: 16rem;
+  height: 14rem;
   border-radius: 26px;
   background-color: var(--md-sys-color-tertiary);
   color: var(--md-sys-color-on-tertiary);
@@ -57,7 +57,7 @@ body {
 }
 
 .weather-info-cards-frame {
-  min-height: 16rem;
+  min-height: 14rem;
   display: flex;
   flex-direction: row;
   align-items: end;
@@ -65,10 +65,26 @@ body {
 }
 
 .weather-info-card.is-clicked {
-  height: 16rem;
+  height: 14rem;
   border-radius: 26px;
   background-color: var(--md-sys-color-tertiary);
   color: var(--md-sys-color-on-tertiary);
+}
+
+.alert-box {
+  pointer-events: auto;
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  background-color: var(--md-sys-color-primary);
+  width: 15rem;
+  height: 6rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: ease 0.5s;
+}
+.alert-box.is-visible {
+  opacity: 1;
 }
 
 .result-page {

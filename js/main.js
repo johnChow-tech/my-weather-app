@@ -56,6 +56,8 @@ function updateUI(data) {
 }
 
 function showError(message) {
+  elements.alertCityNotFound.classList.add('is-visible');
+  // TODO: 添加定时隐藏功能
   console.error('❌ Error! Should show feedback to user:', message);
 }
 

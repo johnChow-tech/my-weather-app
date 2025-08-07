@@ -14,9 +14,14 @@ $spacing-xl: 2rem; // 32px
 $spacing-xxl: 3rem; // 48px
 
 // card size
+$card-width-xs: 5rem;
+$card-width-s: 9rem;
 $card-width-m: 15rem;
+$card-width-l: 21rem;
+$card-height-xs: 2rem;
+$card-height-s: 6rem;
 $card-height-m: 10rem;
-$card-height-l: 16rem;
+$card-height-l: 14rem;
 
 // corner radius
 $shape-corner-xl: 26px;
@@ -43,4 +48,8 @@ $color-on-tertiary-container: var(--md-sys-color-on-tertiary-container);
   border-radius: $shape-corner-xl;
   background-color: $color-tertiary;
   color: $color-on-tertiary;
+}
+
+@mixin is-visible() {
+  display: flex;
 }

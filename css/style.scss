@@ -96,6 +96,22 @@ body {
   }
 }
 
+.alert-box {
+  pointer-events: auto;
+  position: fixed;
+  bottom: v.$spacing-lg;
+  right: v.$spacing-lg;
+  background-color: v.$color-primary;
+  width: v.$card-width-m;
+  height: v.$card-height-s;
+  opacity: 0;
+  pointer-events: none;
+  transition: ease 0.5s;
+  &.is-visible {
+    opacity: 1;
+  }
+}
+
 // ===================================
 // View Management (视图管理)
 // ===================================
