@@ -47,7 +47,7 @@ function updateUI(data) {
     },
   } = data;
 
-  elements.weatherIcon.src = `${icon}`;
+  elements.weatherIcon.src = `https:${icon}`;
   elements.weatherIcon.alt = `${text}`;
   elements.cityName.textContent = `${name},${country}`;
   elements.weatherInfoCards.descriptionCard.textContent = `${text}`;
@@ -57,9 +57,13 @@ function updateUI(data) {
   elements.weatherInfoCards.windSpeedCard.textContent = `${wind_kph} km/h`;
 }
 
+/**
+ * Display alert box when error occurs.
+ * @param {string} message - alert message to display
+ */
 let alertTimeoutId = null;
-
 function showError(message) {
+  // TODO: add message to alert-box
   elements.alertCityNotFound.classList.add('is-visible');
   if (alertTimeoutId) {
     clearTimeout(alertTimeoutId);
@@ -71,13 +75,29 @@ function showError(message) {
 }
 
 /**
+ * Call weather api with fetchWeatherData()
+ * @param {string} cityName
+ */
+async function callApi(cityName) {
+  try {
+    const weatherData = await fetchWeatherData(cityName);
+    updateUI(weatherData);
+  } catch (error) {
+    showError(error);
+  }
+}
+
+// -------------------
+//  Handlers
+// -------------------
+/**
  * Handles the click event on a popular city chip.
  * Sets the search text field's value to the chip's label.
  * @param {Event} event - The click event object.
  */
 const handlePopularCityClick = (event) => {
   const chip = event.currentTarget;
-  elements.searchTextField.value = chip.label;
+  callApi(chip.label);
 };
 
 /**
@@ -87,13 +107,7 @@ const handlePopularCityClick = (event) => {
  */
 const handleSearchKeydown = async (event) => {
   if (event.code === 'Enter') {
-    try {
-      const weatherData = await fetchWeatherData(elements.searchTextField.value);
-      console.log(weatherData);
-      updateUI(weatherData);
-    } catch (error) {
-      showError(error);
-    }
+    callApi(elements.searchTextField.value);
   }
 };
 
