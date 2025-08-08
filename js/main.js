@@ -3,7 +3,7 @@ import { fetchWeatherData } from './api.js';
 // -------------------
 //  DOM Elements
 // -------------------
-export const elements = {
+const elements = {
   body: document.body,
   // top page
   mainLogo: document.querySelector('.main-logo'),
@@ -47,6 +47,8 @@ function updateUI(data) {
     },
   } = data;
 
+  elements.weatherIcon.src = `${icon}`;
+  elements.weatherIcon.alt = `${text}`;
   elements.cityName.textContent = `${name},${country}`;
   elements.weatherInfoCards.descriptionCard.textContent = `${text}`;
   elements.weatherInfoCards.temperatureCard.textContent = `${temp_c} ℃`;
@@ -55,9 +57,16 @@ function updateUI(data) {
   elements.weatherInfoCards.windSpeedCard.textContent = `${wind_kph} km/h`;
 }
 
+let alertTimeoutId = null;
+
 function showError(message) {
   elements.alertCityNotFound.classList.add('is-visible');
-  // TODO: 添加定时隐藏功能
+  if (alertTimeoutId) {
+    clearTimeout(alertTimeoutId);
+  }
+  alertTimeoutId = setTimeout(() => {
+    elements.alertCityNotFound.classList.remove('is-visible');
+  }, 2000);
   console.error('❌ Error! Should show feedback to user:', message);
 }
 
@@ -79,8 +88,9 @@ const handlePopularCityClick = (event) => {
 const handleSearchKeydown = async (event) => {
   if (event.code === 'Enter') {
     try {
-      const data = await fetchWeatherData(elements.searchTextField.value);
-      updateUI(data);
+      const weatherData = await fetchWeatherData(elements.searchTextField.value);
+      console.log(weatherData);
+      updateUI(weatherData);
     } catch (error) {
       showError(error);
     }
@@ -94,26 +104,8 @@ const handleSearchKeydown = async (event) => {
  */
 const handleWeatherInfoCardClick = (event) => {
   const clickedCard = event.currentTarget;
+  clickedCard.classList.toggle('is-clicked');
   const cardType = clickedCard.dataset.cardType;
-
-  switch (cardType) {
-    case 'humidity':
-      elements.weatherInfoCards.humidityCard.classList.toggle('is-clicked');
-      break;
-    case 'description':
-      elements.weatherInfoCards.descriptionCard.classList.toggle('is-clicked');
-      break;
-    case 'temperature':
-      elements.weatherInfoCards.temperatureCard.classList.toggle('is-clicked');
-      break;
-    case 'pressure':
-      elements.weatherInfoCards.pressureCard.classList.toggle('is-clicked');
-      break;
-    case 'wind-speed':
-      elements.weatherInfoCards.windSpeedCard.classList.toggle('is-clicked');
-      break;
-  }
-
   console.log(`A weather card was clicked:${cardType}`);
 };
 

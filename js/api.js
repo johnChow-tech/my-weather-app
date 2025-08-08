@@ -1,5 +1,4 @@
 import { WEATHER_API_KEY } from './config.js';
-import { elements } from './main.js';
 
 /**
  * Get JSON data from weather api

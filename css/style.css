@@ -57,6 +57,8 @@ body {
 }
 
 .weather-info-cards-frame {
+  max-width: 90vw;
+  min-width: 50vw;
   min-height: 14rem;
   display: flex;
   flex-direction: row;
@@ -72,11 +74,12 @@ body {
 }
 
 .alert-box {
-  pointer-events: auto;
   position: fixed;
+  border-radius: 8px;
+  pointer-events: auto;
   bottom: 1.5rem;
   right: 1.5rem;
-  background-color: var(--md-sys-color-primary);
+  background-color: var(--md-sys-color-tertiary-container);
   width: 15rem;
   height: 6rem;
   opacity: 0;

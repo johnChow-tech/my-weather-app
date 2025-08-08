@@ -82,6 +82,8 @@ body {
 }
 
 .weather-info-cards-frame {
+  max-width: 90vw;
+  min-width: 50vw;
   min-height: v.$card-height-l;
   display: flex;
   flex-direction: row; //横向排列
@@ -97,11 +99,12 @@ body {
 }
 
 .alert-box {
-  pointer-events: auto;
   position: fixed;
+  border-radius: v.$shape-corner-s;
+  pointer-events: auto;
   bottom: v.$spacing-lg;
   right: v.$spacing-lg;
-  background-color: v.$color-primary;
+  background-color: v.$color-tertiary-container;
   width: v.$card-width-m;
   height: v.$card-height-s;
   opacity: 0;
