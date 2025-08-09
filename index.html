@@ -66,7 +66,9 @@
         <md-suggestion-chip label="Tokyo"></md-suggestion-chip>
       </div>
       <!-- will disappear in n second -->
-      <div class="alert-box"></div>
+      <div class="alert-box">
+        <p class="alert-box-message"></p>
+      </div>
     </section>
     <section class="result-page">
       <div class="main-logo">
@@ -74,11 +76,26 @@
       </div>
       <h2 class="city-name"></h2>
       <div class="weather-info-cards-frame">
-        <div class="weather-info-card humidity" data-card-type="humidity"></div>
-        <div class="weather-info-card description" data-card-type="description"></div>
-        <div class="weather-info-card temperature" data-card-type="temperature"></div>
-        <div class="weather-info-card barometric-pressure" data-card-type="pressure"></div>
-        <div class="weather-info-card wind-speed" data-card-type="wind-speed"></div>
+        <div class="weather-info-card humidity" data-card-type="humidity">
+          <span class="weather-info-detail-header">humidity</span>
+          <p class="weather-info-detail-body"></p>
+        </div>
+        <div class="weather-info-card description" data-card-type="description">
+          <span class="weather-info-detail-header">description</span>
+          <p class="weather-info-detail-body"></p>
+        </div>
+        <div class="weather-info-card temperature" data-card-type="temperature">
+          <span class="weather-info-detail-header">temperature</span>
+          <p class="weather-info-detail-body"></p>
+        </div>
+        <div class="weather-info-card pressure" data-card-type="pressure">
+          <span class="weather-info-detail-header">pressure</span>
+          <p class="weather-info-detail-body"></p>
+        </div>
+        <div class="weather-info-card windSpeed" data-card-type="wind-speed">
+          <span class="weather-info-detail-header">wind-speed</span>
+          <p class="weather-info-detail-body"></p>
+        </div>
       </div>
     </section>
   </body>

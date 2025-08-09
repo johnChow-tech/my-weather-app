@@ -105,8 +105,10 @@ body {
   bottom: v.$spacing-lg;
   right: v.$spacing-lg;
   background-color: v.$color-tertiary-container;
-  width: v.$card-width-m;
-  height: v.$card-height-s;
+  max-width: v.$card-width-l;
+  max-height: v.$card-height-s;
+  min-width: v.$card-width-m;
+  min-height: v.$card-height-xs;
   opacity: 0;
   pointer-events: none;
   transition: ease 0.5s;

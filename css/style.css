@@ -80,8 +80,10 @@ body {
   bottom: 1.5rem;
   right: 1.5rem;
   background-color: var(--md-sys-color-tertiary-container);
-  width: 15rem;
-  height: 6rem;
+  max-width: 21rem;
+  max-height: 6rem;
+  min-width: 15rem;
+  min-height: 2rem;
   opacity: 0;
   pointer-events: none;
   transition: ease 0.5s;

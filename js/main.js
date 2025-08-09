@@ -3,29 +3,40 @@ import { fetchWeatherData } from './api.js';
 // -------------------
 //  DOM Elements
 // -------------------
+const weatherInfoCardsTypes = ['humidity', 'description', 'temperature', 'pressure', 'windSpeed'];
+
 const elements = {
   body: document.body,
   // top page
   mainLogo: document.querySelector('.main-logo'),
   inputBox: document.querySelector('.input-box'),
   searchTextField: document.querySelector('md-outlined-text-field'),
-  alertCityNotFound: document.querySelector('.alert-box'),
+  alertBox: document.querySelector('.alert-box'),
+  alertBoxText: document.querySelector('.alert-box-message'),
   popularCitiesContainer: document.querySelector('.popular-cities'),
   popularCitiesChips: document.querySelectorAll('md-suggestion-chip'),
   // result page
   cityName: document.querySelector('.city-name'),
   weatherIcon: document.querySelector('.weather-icon'),
   // weatherInfoCards: document.querySelectorAll('.weather-info-card'),
-  weatherInfoCards: {
-    all: document.querySelectorAll('.weather-info-card'),
-    descriptionCard: document.querySelector('.weather-info-card.description'),
-    temperatureCard: document.querySelector('.weather-info-card.temperature'),
-    humidityCard: document.querySelector('.weather-info-card.humidity'),
-    pressureCard: document.querySelector('.weather-info-card.barometric-pressure'),
-    windSpeedCard: document.querySelector('.weather-info-card.wind-speed'),
-  },
-};
+  weatherInfoCards: weatherInfoCardsTypes.reduce(
+    (acc, type) => {
+      // 根据类型找到卡片容器
+      const cardElement = document.querySelector(`.weather-info-card.${type}`);
+      // 在卡片容器内找到显示文本的元素
+      const textElement = cardElement.querySelector('.weather-info-detail-body');
 
+      // 将卡片和文本元素都存入对象中
+      acc[type] = {
+        card: cardElement,
+        text: textElement,
+      };
+
+      return acc;
+    },
+    { all: document.querySelectorAll('.weather-info-card') }
+  ),
+};
 // -------------------
 //  Functions
 // -------------------
@@ -50,11 +61,11 @@ function updateUI(data) {
   elements.weatherIcon.src = `https:${icon}`;
   elements.weatherIcon.alt = `${text}`;
   elements.cityName.textContent = `${name},${country}`;
-  elements.weatherInfoCards.descriptionCard.textContent = `${text}`;
-  elements.weatherInfoCards.temperatureCard.textContent = `${temp_c} ℃`;
-  elements.weatherInfoCards.humidityCard.textContent = `${humidity}%`;
-  elements.weatherInfoCards.pressureCard.textContent = `${pressure_mb} hpa`;
-  elements.weatherInfoCards.windSpeedCard.textContent = `${wind_kph} km/h`;
+  elements.weatherInfoCards.humidity.text.textContent = `${humidity}%`;
+  elements.weatherInfoCards.description.text.textContent = `${text}`;
+  elements.weatherInfoCards.temperature.text.textContent = `${temp_c} ℃`;
+  elements.weatherInfoCards.pressure.text.textContent = `${pressure_mb} hpa`;
+  elements.weatherInfoCards.windSpeed.text.textContent = `${wind_kph} km/h`;
 }
 
 /**
@@ -63,13 +74,13 @@ function updateUI(data) {
  */
 let alertTimeoutId = null;
 function showError(message) {
-  // TODO: add message to alert-box
-  elements.alertCityNotFound.classList.add('is-visible');
+  elements.alertBoxText.textContent = message;
+  elements.alertBox.classList.add('is-visible');
   if (alertTimeoutId) {
     clearTimeout(alertTimeoutId);
   }
   alertTimeoutId = setTimeout(() => {
-    elements.alertCityNotFound.classList.remove('is-visible');
+    elements.alertBox.classList.remove('is-visible');
   }, 2000);
   console.error('❌ Error! Should show feedback to user:', message);
 }
